@@ -16,14 +16,17 @@ func main() {
 
 	bucket = 5
 
+	// Initialize the redis client
 	client := RedisInit()
 	ctx := context.Background()
 
+	// Command to set a variable in Redis
 	err := client.Set(ctx, "foo", "bar", 0).Err()
 	if err != nil {
 		panic(err)
 	}
 
+	// Command to get value from Redits
 	val, err := client.Get(ctx, "foo").Result()
 
 	if err != nil {
